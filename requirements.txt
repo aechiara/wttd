@@ -1,0 +1,6 @@
+django==1.6
+unipath
+gunicorn==18.0
+dj-database-url==0.2.2
+dj-static==0.0.5
+psycopg2==2.5.1
