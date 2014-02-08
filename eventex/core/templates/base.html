@@ -1,0 +1,80 @@
+<html>
+<head>
+    {% block cabecalho %}
+    <title>Base Title</title>
+    {% endblock %}
+
+    <link rel="shortcut icon" href="http://twitter.github.com/bootstrap/assets/ico/favicon.ico">
+    <link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet">
+
+    <style type="text/css">
+        body {
+            padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+            width: 80%;
+        }
+
+        <link href="{{ STATIC_URL }}css/style.css" rel="stylesheet">
+    </style>
+</head>
+
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Eventex</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#about">A Empresa</a></li>
+                    <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Nossos Servi&ccedil;os <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Feiras e Congressos</a></li>
+                        <li><a href="#">Recep&ccedil;&atilde;o de Eventos</a></li>
+                        <li><a href="#">Eventos Esportivos</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Outros Servi&ccedil;os</li>
+                        <li><a href="#">Entre em contato</a></li>
+                    </ul>
+                    <li><a href="#clientes">Clientes</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                    </li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </div>
+
+
+    <div class="container">
+        {% block corpo %}
+
+        {% endblock %}
+    </div>
+
+    <div id="footer">
+        <div class="navbar navbar-inverse navbar-fixed-bottom">
+            <div class="navbar-collapse collapse">
+                <div class="navbar-form navbar-left">
+                    <span style="color: #FFFFFF;">&copy; 2014. <a rel="license" href="http://alex-wttd.heroku.com">EventeX</a>, some rights reserved. <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/br/80x15.png" /></a></span>
+                </div>
+                <div class="navbar-form navbar-right">
+                    <a href="http://www.djangoproject.com/" id="django"><img src="https://djangoproject.com/s/img/badges/djangosite100x25.gif" border="0" alt="A Django site." title="A Django site." /></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+
+</body>
+</html>
