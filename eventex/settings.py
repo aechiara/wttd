@@ -11,7 +11,8 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 #import os
 #BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-import dj_database_url
+from decouple import config
+from dj_database_url import parse as db_url
 from unipath import Path
 BASE_DIR = Path(__file__).parent
 
@@ -20,14 +21,16 @@ BASE_DIR = Path(__file__).parent
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = ')u4n4n=slpzv4l98xsf=+83)hqy+jo9=uus)3nslf_&)gb_k%t'
+#SECRET_KEY = ')u4n4n=slpzv4l98xsf=+83)hqy+jo9=uus)3nslf_&)gb_k%t'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+#DEBUG = True
+#TEMPLATE_DEBUG = True
+DEBUG = config('DEBUG', default=False, cast=bool)
+TEMPLATE_DEBUG = DEBUG
 
-TEMPLATE_DEBUG = True
-
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.localhost', '127.0.0.1', '.heroku.com']
 
 
 # Application definition
@@ -65,8 +68,12 @@ DATABASES = {
         #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         #'NAME': BASE_DIR.child('db.sqlite3'),
         #}
-        'default': dj_database_url.config(
-            default='sqlite:///' + BASE_DIR.child('db.sqlite3'))
+        #'default': dj_database_url.config(
+        #default='sqlite:///' + BASE_DIR.child('db.sqlite3'))
+        'default': config(
+            'DATABASE_URL',
+            default='sqlite:///' + BASE_DIR.child('db.sqlite3'),
+            cast=db_url),
 }
 
 # Internationalization
