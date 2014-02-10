@@ -1,3 +1,18 @@
 from django.test import TestCase
 
-# Create your tests here.
+
+class HomeTest(TestCase):
+    def setUp(self):
+        self.resp = self.client.get('/')
+
+    def test_get(self):
+        '''
+        GET / must return status code 200
+        '''
+        self.assertEqual(self.resp.status_code, 200)
+
+    def test_template(self):
+        '''
+        Home must use template index.html
+        '''
+        self.assertTemplateUsed(self.resp, 'index.html')
