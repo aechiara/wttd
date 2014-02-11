@@ -1,7 +1,12 @@
 {% extends 'base.html' %}
 
+{% block cabecalho %}
+    <title>Eventex - Confirma&ccedil;&atilde;o de Inscri&ccedil;&atilde;o</title>
+{% endblock %}
+
 {% block corpo %}
 
+<h2>
 <p>Parab&eacute;ns {{ subscription.name }},<p>
 <p>a sua inscri&ccedil;&atilde;o foi realizada com sucesso em
 {{ subscription.created_at|date:"d/m/Y" }}.
@@ -14,5 +19,6 @@
         e-mail {{ subscription.email }}
     {% endif %}
 </p>
+</h2>
 
 {% endblock %}
