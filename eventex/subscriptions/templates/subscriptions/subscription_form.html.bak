@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block cabecalho %}
+    <title>Eventex - Inscri&ccedil;&atilde;o</title>
+{% endblock %}
+
+{% block corpo %}
+
+<div class="page-header">
+    <h1>Formul&aacute;rio de Inscri&ccedil;&atilde;o</h1>
+</div>
+
+<div class="lead">
+    
+    <form role="form" action="." method="POST">
+
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label for="id_name">Nome:</label>
+            <input type="text" class="form-control" id="id_name" name="name" maxlength="100" placeholder="Digite o Nome">
+        </div>
+        <div class="form-group">
+            <label for="id_cpf">CPF:</label>
+            <input type="text" class="form-control" id="id_cpf" name="cpf" maxlength="11" placeholder="Digite o CPF">
+        </div>
+         <div class="form-group">
+            <label for="id_email">Email:</label>
+            <input type="email" class="form-control" id="id_email" name="email" maxlength="75" placeholder="Digite o E-mail">
+        </div>
+        <div class="form-group">
+            <label for="id_phone">Telefone</label>
+            <input type="text" class="form-control" id="id_phone" maxlength="20" placeholder="Digite o telefone">
+        </div>
+        <button type="submit" class="btn btn-default">Enviar</button>
+    </form>
+
+
+</div>
+
+
+{% endblock %}
