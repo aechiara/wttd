@@ -31,4 +31,3 @@ class DetailNotFound(TestCase):
         ''' Must return 404 when not found '''
         response = self.client.get('/inscricao/0/')
         self.assertEqual(404, response.status_code)
-        :xa
