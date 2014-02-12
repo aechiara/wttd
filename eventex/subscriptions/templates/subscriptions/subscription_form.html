@@ -17,25 +17,42 @@
 
         {% csrf_token %}
 
-        <div class="form-group">
+        <div class="form-group {% if form.name.errors %} has-error {% endif %}">
             <label for="{{ form.name.id_for_label }}">{{ form.name.label }}:</label>
             {{ form.name|addcss:'form-control' }}
-            {{ form.name.errors }}
+            {% if form.name.errors %}
+            <div class="alert alert-danger">
+                {{ form.name.errors }}
+            </div>
+            {% endif %}
         </div>
-        <div class="form-group">
+        <div class="form-group {% if form.cpf.errors %} has-error {% endif %}">
             <label for="{{ form.cpf.id_for_label }}">{{ form.cpf.label }}:</label>
             {{ form.cpf|addcss:'form-control' }}
-            {{ form.cpf.errors }}
+            {% if form.cpf.errors %}
+            <div class="alert alert-danger">
+                {{ form.cpf.errors }}
+            </div>
+            {% endif %}
         </div>
-         <div class="form-group">
+        <div class="form-group {% if form.email.errors %} has-error {% endif %}">
              <label for="{{ form.email.id_for_label }}">{{ form.email.label }}:</label>
              {{ form.email|addcss:'form-control' }}
-             {{ form.email.errors }}
+             {% if form.email.errors %}
+             <div class="alert alert-danger">
+                 {{ form.email.errors }}
+             </div>
+             {% endif %}
         </div>
-        <div class="form-group">
+        <div class="form-group {% if form.phone.errors %} has-error {% endif %}">
             <label for="{{ form.phone.id_for_label }}">{{ form.phone.label }}:</label>
             {{ form.phone|addcss:'form-control' }}
-            {{ form.phone.errors }}
+            {% if form.phone.errors %}
+            <div class="alert alert-danger">
+                {{ form.phone.errors }}
+            </div>
+            {% endif %}
+
         </div>
         <button type="submit" class="btn btn-default">Enviar</button>
     </form>
