@@ -32,6 +32,7 @@ TEMPLATE_DEBUG = DEBUG
 
 ALLOWED_HOSTS = ['.localhost', '127.0.0.1', '.herokuapp.com']
 
+SOUTH_TESTS_MIGRATE = False
 
 # Application definition
 
@@ -42,6 +43,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'south',
     'eventex.core',
     'eventex.subscriptions',
 )
