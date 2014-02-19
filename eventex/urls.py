@@ -8,13 +8,11 @@ urlpatterns = patterns('',
     # url(r'^$', 'eventex.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
-    # core
-    url(r'^$', 'eventex.core.views.home', name = 'home'),
+    url(r'^admin/', include(admin.site.urls)),
 
     # subscriptions
-    url(r'^inscricao/$', 'eventex.subscriptions.views.subscribe', name='subscribe'),
-    url(r'^inscricao/(\d+)/$', 'eventex.subscriptions.views.detail', name='detail'),
+    url(r'^inscricao/', include('eventex.subscriptions.urls', namespace='subscriptions')),
 
-
-    url(r'^admin/', include(admin.site.urls)),
+    # core
+    url(r'', include('eventex.core.urls', namespace='core')),
 )

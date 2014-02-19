@@ -1,9 +1,5 @@
 <html>
 <head>
-    {% block cabecalho %}
-    <title>Base Title</title>
-    {% endblock %}
-
     <link rel="shortcut icon" href="http://twitter.github.com/bootstrap/assets/ico/favicon.ico">
     <link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet">
 
@@ -15,6 +11,11 @@
 
     </style>
     <!-- <link href="{{ STATIC_URL }}css/style.css" rel="stylesheet"> -->
+
+    {% block cabecalho %}
+    <title>Base Title</title>
+    {% endblock %}
+
 </head>
 
 <body>
@@ -30,7 +31,7 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="/">Home</a></li>
+                    <li class="active"><a href="{% url 'core:home' %}">Home</a></li>
                     <li><a href="#about">A Empresa</a></li>
                     <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Nossos Servi&ccedil;os <b class="caret"></b></a>
