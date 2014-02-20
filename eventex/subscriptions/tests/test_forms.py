@@ -18,6 +18,11 @@ class SubscriptionFormTest(TestCase):
         form = self.make_validated_form(cpf='1234')
         self.assertItemsEqual(['cpf'], form.errors)
 
+    def test_email_is_optional(self):
+        ''' Email is optional '''
+        form = self.make_validated_form(email='')
+        self.assertFalse(form.errors)
+
     def test_must_inform_email_or_phone(self):
         ''' Must inform email or phone '''
         form = self.make_validated_form(email='', phone_0='', phone_1='')
