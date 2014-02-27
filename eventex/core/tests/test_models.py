@@ -1,6 +1,7 @@
 # coding: utf-8
 from django.test import TestCase
 from django.core.exceptions import ValidationError
+from django.db import IntegrityError
 from django.core.urlresolvers import reverse as r
 from ..models import Speaker, Contact
 
@@ -16,6 +17,14 @@ class SpeakerModelTest(TestCase):
     def test_create(self):
         ''' Speaker instance should be saved '''
         self.assertEqual(1, len(Speaker.objects.all()))
+
+    def test_slug_must_be_unique(self):
+        ''' Slug field must be unique '''
+        speaker = Speaker(name='Alex Chiaranda 2',
+                slug='alex-chiaranda',
+                url='http://www.outofmemory.blog.br',
+                description='Passionate python developer')
+        self.assertRaises(IntegrityError, speaker.save)
 
     def test_unicode(self):
         ''' Speaker string representation should be the name '''
