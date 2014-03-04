@@ -62,8 +62,21 @@
         <button type="submit" class="btn btn-default">Enviar</button>
     </form>
 
-
 </div>
 
+{% endblock %}
 
+
+{% block last_script %}
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" media="all" />
+    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#id_email").autocomplete({
+                source: "{% url 'subscriptions:get_emails' %}",
+                selectFirst:true,
+                minLength: 2,
+            });
+        });
+    </script>
 {% endblock %}
