@@ -47,3 +47,15 @@ def get_emails(request):
     
     print data
     return HttpResponse(data, 'application/json')
+
+def validate_cpf(request):
+    if request.is_ajax():
+        form = request.GET.get('cpf')
+        if validate_cpf(form.cpf):
+            return HttpResponse("Success")
+        else:
+            return HttpResponse("Fail")
+
+    return HttpResponse("Fail")
+
+

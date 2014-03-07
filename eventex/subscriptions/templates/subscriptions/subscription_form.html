@@ -78,5 +78,26 @@
                 minLength: 2,
             });
         });
+
+
+        $(function() {
+            $("#id_cpf").blur(function() {
+                var cpf = $("#id_cpf").val();
+                console.log("cpf: " + cpf);
+                $.ajax({
+                    url: "{% url 'subscriptions:validate_cpf' %}" + cpf,
+                    type: "get",
+                    success: function (response) {
+                    alert('ok');
+                    },
+                    erro: function (response) {
+                    alert('erro');
+                    },
+                });
+                event.preventDefault();
+            });
+        });
+
+
     </script>
 {% endblock %}
