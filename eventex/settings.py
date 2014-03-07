@@ -46,6 +46,8 @@ INSTALLED_APPS = (
     'south',
     'eventex.core',
     'eventex.subscriptions',
+    'social.apps.django_app.default',
+    'social.apps.django_app.default',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -107,3 +109,8 @@ TEMPLATE_LOADERS = (
 TEMPLATE_DIRS = (
     #BASE_DIR.child('core/templates'),
 )
+
+#AUTHENTICATION_BACKENDS = (
+    #'django.contrib.auth.backends.ModelBackend',
+#)
+
