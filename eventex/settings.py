@@ -46,8 +46,6 @@ INSTALLED_APPS = (
     'south',
     'eventex.core',
     'eventex.subscriptions',
-    'social.apps.django_app.default',
-    'social.apps.django_app.default',
 )
 
 MIDDLEWARE_CLASSES = (
