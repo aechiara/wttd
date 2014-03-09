@@ -31,7 +31,7 @@
             </div>
             {% endif %}
         </div>
-        <div class="form-group {% if form.cpf.errors %} has-error {% endif %}">
+        <div id="cpf_div" class="form-group {% if form.cpf.errors %} has-error {% endif %}">
             <label for="{{ form.cpf.id_for_label }}">{{ form.cpf.label }}:</label>
             {{ form.cpf|addcss:'form-control' }}
             {% if form.cpf.errors %}
@@ -83,16 +83,23 @@
         $(function() {
             $("#id_cpf").blur(function() {
                 var cpf = $("#id_cpf").val();
-                console.log("cpf: " + cpf);
                 $.ajax({
-                    url: "{% url 'subscriptions:validate_cpf' %}" + cpf,
+                    url: "{% url 'subscriptions:validate_cpf' %}",
+                    data: "cpf=" + cpf,
                     type: "get",
                     success: function (response) {
-                    alert('ok');
+                        if (response === "Fail")
+                        {
+                            $("#cpf_div").addClass("has-error");
+                        }
+                        else
+                        {
+                            $("#cpf_div").removeClass("has-error");
+                        }
                     },
-                    erro: function (response) {
-                    alert('erro');
-                    },
+                    beforeSend: function(jqXHR, settings) {
+                        jqXHR.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+                   },
                 });
                 event.preventDefault();
             });

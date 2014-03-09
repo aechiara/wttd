@@ -12,6 +12,23 @@ def CPFValidator(value):
     if len(value) != 11:
         raise ValidationError(_(u'CPF deve ter 11 números'))
 
+def cpf_checksum(cpf):
+    """
+    CPF Checksum algorithm.
+    """
+    if cpf in map(lambda x: str(x) * 11, range(0, 10)):
+        return False
+
+    def dv(partial):
+        s = sum(b * int(v) for b, v in zip(range(len(partial)+1, 1, -1), partial))
+        return s % 11
+
+    dv1 = 11 - dv(cpf[:9])
+    q2 = dv(cpf[:10])
+    dv2 = 11 - q2 if q2 >= 2 else 0
+
+    return dv1 == int(cpf[9]) and dv2 == int(cpf[10])
+
 
 class PhoneWidget(forms.MultiWidget):
     def __init__(self, attrs=None):
