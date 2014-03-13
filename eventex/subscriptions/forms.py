@@ -16,6 +16,11 @@ def cpf_checksum(cpf):
     """
     CPF Checksum algorithm.
     """
+    try:
+        CPFValidator(cpf)
+    except ValidationError:
+        return False
+
     if cpf in map(lambda x: str(x) * 11, range(0, 10)):
         return False
 
